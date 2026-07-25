@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Website Manager | Admin Panel</title>
+
+<link rel="stylesheet" href="../assets/css/style.css">
+
+<link rel="link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+</head>
+
+<body>
+
+<section class="dashboard">
+
+<div class="container">
+
+<div class="dashboard-header">
+
+<div>
+
+<h1>Website Manager</h1>
+
+<p>Manage Messages, Gallery and Notices</p>
+
+</div>
+
+<a href="dashboard.html" class="btn-primary">
+
+<i class="fa-solid fa-arrow-left"></i>
+
+Dashboard
+
+</a>
+
+</div>
+
+<!-- CONTACT MESSAGES -->
+
+<div class="section-heading">
+
+<h2>Contact Messages</h2>
+
+</div>
+
+<table id="messageTable">
+
+<thead>
+
+<tr>
+
+<th>Name</th>
+
+<th>Mobile</th>
+
+<th>Subject</th>
+
+<th>Action</th>
+
+</tr>
+
+</thead>
+
+<tbody></tbody>
+
+</table>
+
+<hr style="margin:50px 0;">
+
+<!-- GALLERY -->
+
+<div class="section-heading">
+
+<h2>Gallery Manager</h2>
+
+</div>
+
+<input type="file" id="galleryImage">
+
+<br><br>
+
+<button id="uploadGallery" class="btn-primary">
+
+Upload Image
+
+</button>
+
+<div id="galleryList" style="margin-top:30px;"></div>
+
+<hr style="margin:50px 0;">
+
+<!-- NOTICE -->
+
+<div class="section-heading">
+
+<h2>Notice Manager</h2>
+
+</div>
+
+<input
+type="text"
+id="noticeTitle"
+placeholder="Notice Title">
+
+<br><br>
+
+<textarea
+id="noticeText"
+rows="5"
+placeholder="Notice Details"></textarea>
+
+<br><br>
+
+<button
+id="addNotice"
+class="btn-primary">
+
+Publish Notice
+
+</button>
+
+<div id="noticeList" style="margin-top:30px;"></div>
+
+</div>
+
+</section>
+
+<script type="module">
+
+import {db,storage}
+
+from "../assets/js/firebase.js";
+
+import{
+
+collection,
+
+addDoc,
+
+getDocs,
+
+deleteDoc,
+
+doc
+
+}
+
+from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+import{
+
+ref,
+
+uploadBytes,
+
+getDownloadURL
+
+}
+
+from "https://www.gstatic.com/firebasejs/10.12.2/firebase-storage.js";
+
+/* CONTACT MESSAGES */
+
+async function loadMessages(){
+
+const body=document.querySelector("#messageTable tbody");
+
+body.innerHTML="";
+
+const snap=await getDocs(collection(db,"contacts"));
+
+snap.forEach(d=>{
+
+let x=d.data();
+
+body.innerHTML+=`
+
+<tr>
+
+<td>${x.name||""}</td>
+
+<td>${x.mobile||""}</td>
+
+<td>${x.subject||""}</td>
+
+<td>
+
+<button onclick="alert('Open full message from Firebase')">
+
+View
+
+</button>
+
+</td>
+
+</tr>
+
+`;
+
+});
+
+}
+
+loadMessages();
+
+/* GALLERY */
+
+document.getElementById("uploadGallery").onclick=async()=>{
+
+const file=document.getElementById("galleryImage").files[0];
+
+if(!file)return alert("Choose Image");
+
+const storageRef=ref(storage,"gallery/"+file.name);
+
+await uploadBytes(storageRef,file);
+
+const url=await getDownloadURL(storageRef);
+
+await addDoc(collection(db,"gallery"),{
+
+image:url
+
+});
+
+alert("Image Uploaded");
+
+location.reload();
+
+};
+
+/* NOTICE */
+
+document.getElementById("addNotice").onclick=async()=>{
+
+await addDoc(collection(db,"notices"),{
+
+title:noticeTitle.value,
+
+text:noticeText.value,
+
+date:new Date().toLocaleDateString()
+
+});
+
+alert("Notice Published");
+
+location.reload();
+
+};
+
+</script>
+
+</body>
+
+</html>

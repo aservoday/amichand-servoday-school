@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Admin Dashboard | Amichand Servoday Convent School</title>
+
+    <link rel="stylesheet" href="../assets/css/style.css">
+
+    <link rel="stylesheet" href="../assets/css/responsive.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+          rel="stylesheet">
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+</head>
+
+<body>
+
+<section class="dashboard">
+
+    <div class="container">
+
+        <div class="dashboard-header">
+
+            <div>
+
+                <h1>Admin Dashboard</h1>
+
+                <p>Welcome to Amichand Servoday Convent School Admin Panel</p>
+
+            </div>
+
+            <button id="logoutBtn" class="btn-primary">
+
+                <i class="fa-solid fa-right-from-bracket"></i>
+                Logout
+
+            </button>
+
+        </div>
+
+        <!-- Dashboard Cards -->
+
+        <div class="stats-grid">
+
+            <div class="stat-box">
+
+                <i class="fa-solid fa-user-graduate fa-2x"></i>
+
+                <h2 id="admissionCount">0</h2>
+
+                <p>Total Admissions</p>
+
+            </div>
+
+            <div class="stat-box">
+
+                <i class="fa-solid fa-envelope fa-2x"></i>
+
+                <h2 id="messageCount">0</h2>
+
+                <p>Contact Messages</p>
+
+            </div>
+
+            <div class="stat-box">
+
+                <i class="fa-solid fa-images fa-2x"></i>
+
+                <h2 id="galleryCount">0</h2>
+
+                <p>Gallery Images</p>
+
+            </div>
+
+            <div class="stat-box">
+
+                <i class="fa-solid fa-bullhorn fa-2x"></i>
+
+                <h2 id="noticeCount">0</h2>
+
+                <p>Active Notices</p>
+
+            </div>
+
+        </div>
+
+        <!-- Quick Actions -->
+
+        <div class="section-heading">
+
+            <span class="section-tag">
+
+                QUICK ACTIONS
+
+            </span>
+
+            <h2>
+
+                Manage Website
+
+            </h2>
+
+        </div>
+
+        <div class="why-grid">
+
+            <div class="why-card">
+
+                <i class="fa-solid fa-user-plus"></i>
+
+                <h3>Admissions</h3>
+
+                <p>View and manage all admission enquiries.</p>
+
+                <a href="admissions.html" class="btn-primary">
+
+                    Open
+
+                </a>
+
+            </div>
+
+            <div class="why-card">
+
+                <i class="fa-solid fa-envelope-open-text"></i>
+
+                <h3>Messages</h3>
+
+                <p>Read contact form enquiries from parents.</p>
+
+                <a href="messages.html" class="btn-primary">
+
+                    Open
+
+                </a>
+
+            </div>
+
+            <div class="why-card">
+
+                <i class="fa-solid fa-image"></i>
+
+                <h3>Gallery</h3>
+
+                <p>Upload and remove gallery images.</p>
+
+                <a href="gallery.html" class="btn-primary">
+
+                    Open
+
+                </a>
+
+            </div>
+
+            <div class="why-card">
+
+                <i class="fa-solid fa-pen-to-square"></i>
+
+                <h3>Notices</h3>
+
+                <p>Create, edit and delete school notices.</p>
+
+                <a href="notices.html" class="btn-primary">
+
+                    Open
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<script type="module" src="../assets/js/firebase.js"></script>
+
+<script type="module">
+
+import { auth, db } from "../assets/js/firebase.js";
+
+import {
+    signOut
+} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+
+import {
+    collection,
+    getDocs
+} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+async function loadCounts() {
+
+    const admissions = await getDocs(collection(db, "admissions"));
+    document.getElementById("admissionCount").innerText = admissions.size;
+
+    const contacts = await getDocs(collection(db, "contacts"));
+    document.getElementById("messageCount").innerText = contacts.size;
+
+    const gallery = await getDocs(collection(db, "gallery"));
+    document.getElementById("galleryCount").innerText = gallery.size;
+
+    const notices = await getDocs(collection(db, "notices"));
+    document.getElementById("noticeCount").innerText = notices.size;
+
+}
+
+loadCounts();
+
+document.getElementById("logoutBtn").addEventListener("click", async () => {
+
+    await signOut(auth);
+
+    window.location.href = "login.html";
+
+});
+
+</script>
+
+</body>
+
+</html>

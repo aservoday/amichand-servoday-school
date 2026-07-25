@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Admissions Manager | Admin Panel</title>
+
+    <link rel="stylesheet"
+          href="../assets/css/style.css">
+
+    <link rel="stylesheet"
+          href="../assets/css/responsive.css">
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+</head>
+
+<body>
+
+<section class="dashboard">
+
+<div class="container">
+
+<div class="dashboard-header">
+
+<div>
+
+<h1>Admissions Manager</h1>
+
+<p>View and manage all admission enquiries.</p>
+
+</div>
+
+<a href="dashboard.html" class="btn-primary">
+
+<i class="fa-solid fa-arrow-left"></i>
+
+Dashboard
+
+</a>
+
+</div>
+
+<!-- SEARCH -->
+
+<div style="margin:30px 0;">
+
+<input
+type="text"
+id="searchInput"
+placeholder="Search by student or father name..."
+style="width:100%;padding:14px;border-radius:8px;border:1px solid #ddd;">
+
+</div>
+
+<!-- TABLE -->
+
+<div style="overflow-x:auto;">
+
+<table
+id="admissionTable"
+style="width:100%;border-collapse:collapse;">
+
+<thead>
+
+<tr>
+
+<th>Name</th>
+
+<th>Father</th>
+
+<th>Class</th>
+
+<th>Mobile</th>
+
+<th>Action</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+
+</tbody>
+
+</table>
+
+</div>
+
+<br>
+
+<button
+id="exportExcel"
+class="btn-primary">
+
+<i class="fa-solid fa-file-excel"></i>
+
+Export Excel
+
+</button>
+
+</div>
+
+</section>
+
+<script type="module" src="../assets/js/firebase.js"></script>
+
+<script type="module">
+
+import { db }
+
+from "../assets/js/firebase.js";
+
+import {
+
+collection,
+
+getDocs,
+
+deleteDoc,
+
+doc
+
+}
+
+from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+const tbody=document.querySelector("#admissionTable tbody");
+
+async function loadAdmissions(){
+
+tbody.innerHTML="";
+
+const snap=await getDocs(collection(db,"admissions"));
+
+snap.forEach((d)=>{
+
+const data=d.data();
+
+tbody.innerHTML+=`
+
+<tr>
+
+<td>${data.studentName||""}</td>
+
+<td>${data.fatherName||""}</td>
+
+<td>${data.class||""}</td>
+
+<td>${data.mobile||""}</td>
+
+<td>
+
+<button
+
+class="deleteBtn"
+
+data-id="${d.id}">
+
+Delete
+
+</button>
+
+</td>
+
+</tr>
+
+`;
+
+});
+
+bindDelete();
+
+}
+
+loadAdmissions();
+
+function bindDelete(){
+
+document.querySelectorAll(".deleteBtn").forEach(btn=>{
+
+btn.onclick=async()=>{
+
+if(confirm("Delete this admission?")){
+
+await deleteDoc(doc(db,"admissions",btn.dataset.id));
+
+loadAdmissions();
+
+}
+
+};
+
+});
+
+}
+
+document
+
+.getElementById("searchInput")
+
+.addEventListener("keyup",function(){
+
+let value=this.value.toLowerCase();
+
+let rows=document.querySelectorAll("#admissionTable tbody tr");
+
+rows.forEach(row=>{
+
+row.style.display=row.innerText
+
+.toLowerCase()
+
+.includes(value)
+
+? ""
+
+: "none";
+
+});
+
+});
+
+document
+
+.getElementById("exportExcel")
+
+.addEventListener("click",()=>{
+
+let table=document.getElementById("admissionTable");
+
+let html=table.outerHTML;
+
+let url='data:application/vnd.ms-excel,'+encodeURIComponent(html);
+
+let a=document.createElement("a");
+
+a.href=url;
+
+a.download="Admissions.xls";
+
+a.click();
+
+});
+
+</script>
+
+</body>
+
+</html>

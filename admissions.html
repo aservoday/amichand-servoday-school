@@ -1,0 +1,885 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Online Admission | Amichand Servoday Convent School</title>
+
+<link rel="stylesheet" href="assets/css/admission.css">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+</head>
+
+<body>
+
+<div class="overlay"></div>
+
+<section class="admission-page">
+
+<div class="container">
+
+<!-- HEADER -->
+
+<div class="header-card">
+
+<div class="logo-box">
+
+<img src="assets/images/logo.png" alt="School Logo">
+
+</div>
+
+<div class="school-info">
+
+<h1>AMICHAND SERVODAY CONVENT SCHOOL</h1>
+
+<p>ONLINE ADMISSION PORTAL</p>
+
+<span>Session 2026-27</span>
+
+</div>
+
+</div>
+
+<!-- PROGRESS -->
+
+<div class="progress-card">
+
+<div class="progress-title">
+
+Step 1 of 6
+
+</div>
+
+<div class="progress">
+
+<div class="progress-fill"></div>
+
+</div>
+
+</div>
+
+<!-- FORM -->
+
+<form id="admissionForm">
+
+<div class="form-card">
+
+<h2>
+
+<i class="fa-solid fa-user-graduate"></i>
+
+Student Information
+
+</h2>
+
+<div class="grid">
+
+<div class="input-box">
+
+<label>Registration Number</label>
+<input
+type="text"
+id="registrationNumber"
+readonly>
+
+<input
+type="text"
+value="AUTO GENERATED"
+readonly>
+
+</div>
+
+<div class="input-box">
+
+<label>Admission Applying For</label>
+
+<select required>
+
+<option value="">Select Class</option>
+
+<option>Nursery</option>
+<option>LKG</option>
+<option>UKG</option>
+<option>Class I</option>
+<option>Class II</option>
+<option>Class III</option>
+<option>Class IV</option>
+<option>Class V</option>
+<option>Class VI</option>
+<option>Class VII</option>
+<option>Class VIII</option>
+
+</select>
+
+</div>
+
+<div class="photo-upload">
+
+<label>Student Photograph</label>
+
+<div class="upload-box">
+
+<i class="fa-solid fa-camera"></i>
+
+<p>Upload Passport Size Photo</p>
+
+<input type="file" accept="image/*">
+
+</div>
+
+</div>
+
+<div class="input-box">
+
+<label>Student Full Name</label>
+
+<input
+type="text"
+placeholder="Enter Full Name"
+required>
+
+</div>
+
+<div class="input-box">
+
+<label>Date of Birth</label>
+
+<input
+type="date"
+required>
+
+</div>
+
+<div class="input-box">
+
+<label>Gender</label>
+
+<select required>
+
+<option value="">Select</option>
+
+<option>Male</option>
+
+<option>Female</option>
+
+<option>Other</option>
+
+</select>
+
+</div>
+
+<div class="input-box">
+
+<label>Blood Group</label>
+
+<select>
+
+<option value="">Select</option>
+
+<option>A+</option>
+<option>A-</option>
+<option>B+</option>
+<option>B-</option>
+<option>AB+</option>
+<option>AB-</option>
+<option>O+</option>
+<option>O-</option>
+
+</select>
+
+</div>
+
+<div class="input-box">
+
+<label>Aadhaar Number</label>
+
+<input
+type="text"
+maxlength="12"
+placeholder="Enter Aadhaar Number">
+
+</div>
+
+<div class="input-box">
+
+<label>Nationality</label>
+
+<input
+type="text"
+value="Indian">
+
+</div>
+
+<div class="input-box">
+
+<label>Religion</label>
+
+<select>
+
+<option value="">Select</option>
+
+<option>Hindu</option>
+
+<option>Muslim</option>
+
+<option>Sikh</option>
+
+<option>Christian</option>
+
+<option>Other</option>
+
+</select>
+
+</div>
+
+<div class="input-box">
+
+<label>Category</label>
+
+<select>
+
+<option value="">Select</option>
+
+<option>General</option>
+
+<option>OBC</option>
+
+<option>SC</option>
+
+<option>ST</option>
+
+</select>
+
+</div>
+
+<div class="input-box full">
+
+<label>Previous School</label>
+
+<input
+type="text"
+placeholder="Enter Previous School Name">
+
+</div>
+
+<div class="input-box full">
+
+<label>Present Address</label>
+
+<textarea
+rows="4"
+placeholder="Enter Present Address"></textarea>
+
+</div>
+
+<div class="input-box full">
+
+<label>Permanent Address</label>
+
+<textarea
+rows="4"
+placeholder="Enter Permanent Address"></textarea>
+
+</div>
+
+</div>
+
+<div class="button-box">
+
+<button
+type="button"
+class="next-btn">
+
+Next Step
+
+<i class="fa-solid fa-arrow-right"></i>
+
+</button>
+
+</div>
+
+</div><!-- ==========================
+     FATHER INFORMATION
+=========================== -->
+
+<div class="form-card">
+
+<h2>
+<i class="fa-solid fa-user-tie"></i>
+Father Information
+</h2>
+
+<div class="grid">
+
+<div class="photo-upload full">
+
+<label>Father Photograph</label>
+
+<div class="upload-box">
+
+<i class="fa-solid fa-camera"></i>
+
+<p>Upload Father's Photo</p>
+
+<input type="file"
+id="fatherPhoto"
+accept="image/*">
+
+</div>
+
+</div>
+
+<div class="input-box">
+
+<label>Father's Full Name</label>
+
+<input
+type="text"
+id="fatherName"
+placeholder="Enter Father's Name"
+required>
+
+</div>
+
+<div class="input-box">
+
+<label>Occupation</label>
+
+<input
+type="text"
+id="fatherOccupation"
+placeholder="Occupation">
+
+</div>
+
+<div class="input-box">
+
+<label>Qualification</label>
+
+<input
+type="text"
+id="fatherQualification"
+placeholder="Qualification">
+
+</div>
+
+<div class="input-box">
+
+<label>Aadhaar Number</label>
+
+<input
+type="text"
+id="fatherAadhaar"
+maxlength="12"
+placeholder="Enter Aadhaar Number">
+
+</div>
+
+<div class="input-box">
+
+<label>Mobile Number</label>
+
+<input
+type="tel"
+id="fatherMobile"
+maxlength="10"
+placeholder="Enter Mobile Number"
+required>
+
+</div>
+
+<div class="input-box">
+
+<label>WhatsApp Number</label>
+
+<input
+type="tel"
+id="fatherWhatsapp"
+maxlength="10"
+placeholder="Enter WhatsApp Number">
+
+</div>
+
+<div class="input-box">
+
+<label>Email Address</label>
+
+<input
+type="email"
+id="fatherEmail"
+placeholder="Enter Email Address">
+
+</div>
+
+<div class="input-box">
+
+<label>Annual Income</label>
+
+<select id="fatherIncome">
+
+<option value="">Select Income</option>
+
+<option>Below ₹1,00,000</option>
+<option>₹1,00,000 - ₹3,00,000</option>
+<option>₹3,00,000 - ₹5,00,000</option>
+<option>₹5,00,000 - ₹10,00,000</option>
+<option>Above ₹10,00,000</option>
+
+</select>
+
+</div>
+
+<div class="input-box full">
+
+<label>Father Address</label>
+
+<textarea
+id="fatherAddress"
+rows="4"
+placeholder="Enter Complete Address"></textarea>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- ==========================
+     MOTHER INFORMATION
+=========================== -->
+
+<div class="form-card">
+
+<h2>
+<i class="fa-solid fa-person-dress"></i>
+Mother Information
+</h2>
+
+<div class="grid">
+
+<div class="photo-upload full">
+
+<label>Mother Photograph</label>
+
+<div class="upload-box">
+
+<i class="fa-solid fa-camera"></i>
+
+<p>Upload Mother's Photo</p>
+
+<input type="file"
+id="motherPhoto"
+accept="image/*">
+
+</div>
+
+</div>
+
+<div class="input-box">
+
+<label>Mother's Full Name</label>
+
+<input
+type="text"
+id="motherName"
+placeholder="Enter Mother's Name"
+required>
+
+</div>
+
+<div class="input-box">
+
+<label>Occupation</label>
+
+<input
+type="text"
+id="motherOccupation"
+placeholder="Occupation">
+
+</div>
+
+<div class="input-box">
+
+<label>Qualification</label>
+
+<input
+type="text"
+id="motherQualification"
+placeholder="Qualification">
+
+</div>
+
+<div class="input-box">
+
+<label>Aadhaar Number</label>
+
+<input
+type="text"
+id="motherAadhaar"
+maxlength="12"
+placeholder="Enter Aadhaar Number">
+
+</div>
+
+<div class="input-box">
+
+<label>Mobile Number</label>
+
+<input
+type="tel"
+id="motherMobile"
+maxlength="10"
+placeholder="Enter Mobile Number"
+required>
+
+</div>
+
+<div class="input-box">
+
+<label>WhatsApp Number</label>
+
+<input
+type="tel"
+id="motherWhatsapp"
+maxlength="10"
+placeholder="Enter WhatsApp Number">
+
+</div>
+
+<div class="input-box">
+
+<label>Email Address</label>
+
+<input
+type="email"
+id="motherEmail"
+placeholder="Enter Email Address">
+
+</div>
+
+<div class="input-box">
+
+<label>Annual Income</label>
+
+<select id="motherIncome">
+
+<option value="">Select Income</option>
+
+<option>Below ₹1,00,000</option>
+<option>₹1,00,000 - ₹3,00,000</option>
+<option>₹3,00,000 - ₹5,00,000</option>
+<option>₹5,00,000 - ₹10,00,000</option>
+<option>Above ₹10,00,000</option>
+
+</select>
+
+</div>
+
+<div class="input-box full">
+
+<label>Mother Address</label>
+
+<textarea
+id="motherAddress"
+rows="4"
+placeholder="Enter Complete Address"></textarea>
+
+</div>
+
+</div>
+
+</div>
+<!-- ==========================
+     GUARDIAN INFORMATION
+========================== -->
+
+<div class="form-card">
+
+<h2>
+<i class="fa-solid fa-users"></i>
+Guardian Information (Optional)
+</h2>
+
+<div class="grid">
+
+<div class="photo-upload full">
+
+<label>Guardian Photograph</label>
+
+<div class="upload-box">
+
+<i class="fa-solid fa-camera"></i>
+
+<p>Upload Guardian Photo</p>
+
+<input type="file" id="guardianPhoto" accept="image/*">
+
+</div>
+
+</div>
+
+<div class="input-box">
+<label>Guardian Full Name</label>
+<input type="text" id="guardianName" placeholder="Enter Guardian Name">
+</div>
+
+<div class="input-box">
+<label>Relationship with Student</label>
+<input type="text" id="guardianRelation" placeholder="e.g. Uncle, Grandfather">
+</div>
+
+<div class="input-box">
+<label>Occupation</label>
+<input type="text" id="guardianOccupation" placeholder="Occupation">
+</div>
+
+<div class="input-box">
+<label>Mobile Number</label>
+<input type="tel" id="guardianMobile" maxlength="10" placeholder="Enter Mobile Number">
+</div>
+
+<div class="input-box">
+<label>Email</label>
+<input type="email" id="guardianEmail" placeholder="Enter Email">
+</div>
+
+<div class="input-box full">
+<label>Guardian Address</label>
+<textarea id="guardianAddress" rows="4" placeholder="Enter Guardian Address"></textarea>
+</div>
+
+</div>
+
+</div>
+<!-- ==========================
+     DOCUMENTS UPLOAD
+========================== -->
+
+<div class="form-card">
+
+    <h2>
+        <i class="fa-solid fa-folder-open"></i>
+        Documents Upload
+    </h2>
+
+    <div class="grid">
+
+        <div class="input-box">
+            <label>Student Photograph <span>*</span></label>
+            <input type="file" id="studentPhoto" accept="image/*" required>
+        </div>
+
+        <div class="input-box">
+            <label>Birth Certificate <span>*</span></label>
+            <input type="file" id="birthCertificate" accept=".pdf,.jpg,.jpeg,.png" required>
+        </div>
+
+        <div class="input-box">
+            <label>Student Aadhaar Card <span>*</span></label>
+            <input type="file" id="studentAadhaar" accept=".pdf,.jpg,.jpeg,.png" required>
+        </div>
+
+        <div class="input-box">
+            <label>Father Aadhaar Card <span>*</span></label>
+            <input type="file" id="fatherAadhaarFile" accept=".pdf,.jpg,.jpeg,.png" required>
+        </div>
+
+        <div class="input-box">
+            <label>Mother Aadhaar Card <span>*</span></label>
+            <input type="file" id="motherAadhaarFile" accept=".pdf,.jpg,.jpeg,.png" required>
+        </div>
+
+        <div class="input-box">
+            <label>Transfer Certificate (TC)</label>
+            <input type="file" id="tcCertificate" accept=".pdf,.jpg,.jpeg,.png">
+        </div>
+
+        <div class="input-box">
+            <label>Previous Report Card</label>
+            <input type="file" id="reportCard" accept=".pdf,.jpg,.jpeg,.png">
+        </div>
+
+        <div class="input-box">
+            <label>Caste Certificate (Optional)</label>
+            <input type="file" id="casteCertificate" accept=".pdf,.jpg,.jpeg,.png">
+        </div>
+
+        <div class="input-box">
+            <label>Income Certificate (Optional)</label>
+            <input type="file" id="incomeCertificate" accept=".pdf,.jpg,.jpeg,.png">
+        </div>
+
+        <div class="input-box">
+            <label>Medical Certificate (Optional)</label>
+            <input type="file" id="medicalCertificate" accept=".pdf,.jpg,.jpeg,.png">
+        </div>
+
+    </div>
+
+</div>
+<!-- ==========================
+     DECLARATION
+========================== -->
+
+<div class="form-card">
+
+    <h2>
+        <i class="fa-solid fa-file-signature"></i>
+        Declaration & Parent Consent
+    </h2>
+
+    <div class="declaration-box">
+
+        <p>
+            I hereby declare that all the information provided in this
+            admission application is true and correct to the best of my
+            knowledge. I understand that if any information is found false,
+            the school has the right to cancel the admission.
+        </p>
+
+        <br>
+
+        <label class="checkbox-label">
+
+            <input
+                type="checkbox"
+                id="declaration"
+                required>
+
+            I agree to the above declaration and school rules.
+
+        </label>
+
+    </div>
+
+    <br>
+
+    <div class="grid">
+
+        <div class="input-box">
+
+            <label>Parent / Guardian Name</label>
+
+            <input
+                type="text"
+                id="parentName"
+                placeholder="Enter Parent / Guardian Name"
+                required>
+
+        </div>
+
+        <div class="input-box">
+
+            <label>Relationship</label>
+
+            <select id="relationship" required>
+
+                <option value="">Select</option>
+
+                <option>Father</option>
+
+                <option>Mother</option>
+
+                <option>Guardian</option>
+
+            </select>
+
+        </div>
+
+        <div class="input-box">
+
+            <label>Date</label>
+
+            <input
+                type="date"
+                id="submitDate"
+                required>
+
+        </div>
+
+        <div class="input-box">
+
+            <label>Place</label>
+
+            <input
+                type="text"
+                id="place"
+                placeholder="Enter City / Village"
+                required>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- ==========================
+     SUBMIT BUTTON
+========================== -->
+
+<div class="button-box">
+
+    <button
+        type="reset"
+        class="reset-btn">
+
+        <i class="fa-solid fa-rotate-left"></i>
+
+        Reset Form
+
+    </button>
+
+    <button
+        type="submit"
+        class="submit-btn"
+        id="submitBtn">
+
+        <i class="fa-solid fa-paper-plane"></i>
+
+        Submit Admission Application
+
+    </button>
+
+</div>
+
+<!-- Success Message -->
+
+<div id="successMessage" style="display:none;">
+
+    <h2 style="color:green;text-align:center;margin-top:30px;">
+
+        ✅ Admission Application Submitted Successfully
+
+    </h2>
+
+    <p style="text-align:center;">
+
+        Thank you for choosing
+        <strong>Amichand Servoday Convent School</strong>
+
+    </p>
+
+</div>
+
+</form>
+
+
+</div>
+
+</section>
+
+<script src="assets/js/admission.js"></script>
+<script type="module" src="assets/js/firebase-submit.js"></script>
+</body>
+
+</html>

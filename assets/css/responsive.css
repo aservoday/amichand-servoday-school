@@ -1,0 +1,21 @@
+@media(max-width:991px){
+
+.hero-content{
+    flex-direction:column;
+    text-align:center;
+}
+
+.hero-left,
+.hero-right{
+    width:100%;
+}
+
+.hero-buttons{
+    justify-content:center;
+}
+
+.hero h1{
+    font-size:42px;
+}
+
+}
