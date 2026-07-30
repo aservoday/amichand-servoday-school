@@ -1,234 +1,173 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
     <meta charset="UTF-8">
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>Admin Dashboard | Amichand Servoday Convent School</title>
 
-    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="css/admin.css">
 
-    <link rel="stylesheet" href="../assets/css/responsive.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
+    <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
           rel="stylesheet">
-
-    <link rel="stylesheet"
-          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-
 </head>
-
 <body>
 
-<section class="dashboard">
-
-    <div class="container">
-
-        <div class="dashboard-header">
-
-            <div>
-
-                <h1>Admin Dashboard</h1>
-
-                <p>Welcome to Amichand Servoday Convent School Admin Panel</p>
-
-            </div>
-
-            <button id="logoutBtn" class="btn-primary">
-
-                <i class="fa-solid fa-right-from-bracket"></i>
-                Logout
-
-            </button>
-
-        </div>
-
-        <!-- Dashboard Cards -->
-
-        <div class="stats-grid">
-
-            <div class="stat-box">
-
-                <i class="fa-solid fa-user-graduate fa-2x"></i>
-
-                <h2 id="admissionCount">0</h2>
-
-                <p>Total Admissions</p>
-
-            </div>
-
-            <div class="stat-box">
-
-                <i class="fa-solid fa-envelope fa-2x"></i>
-
-                <h2 id="messageCount">0</h2>
-
-                <p>Contact Messages</p>
-
-            </div>
-
-            <div class="stat-box">
-
-                <i class="fa-solid fa-images fa-2x"></i>
-
-                <h2 id="galleryCount">0</h2>
-
-                <p>Gallery Images</p>
-
-            </div>
-
-            <div class="stat-box">
-
-                <i class="fa-solid fa-bullhorn fa-2x"></i>
-
-                <h2 id="noticeCount">0</h2>
-
-                <p>Active Notices</p>
-
-            </div>
-
-        </div>
-
-        <!-- Quick Actions -->
-
-        <div class="section-heading">
-
-            <span class="section-tag">
-
-                QUICK ACTIONS
-
-            </span>
-
-            <h2>
-
-                Manage Website
-
-            </h2>
-
-        </div>
-
-        <div class="why-grid">
-
-            <div class="why-card">
-
-                <i class="fa-solid fa-user-plus"></i>
-
-                <h3>Admissions</h3>
-
-                <p>View and manage all admission enquiries.</p>
-
-                <a href="admissions.html" class="btn-primary">
-
-                    Open
-
-                </a>
-
-            </div>
-
-            <div class="why-card">
-
-                <i class="fa-solid fa-envelope-open-text"></i>
-
-                <h3>Messages</h3>
-
-                <p>Read contact form enquiries from parents.</p>
-
-                <a href="messages.html" class="btn-primary">
-
-                    Open
-
-                </a>
-
-            </div>
-
-            <div class="why-card">
-
-                <i class="fa-solid fa-image"></i>
-
-                <h3>Gallery</h3>
-
-                <p>Upload and remove gallery images.</p>
-
-                <a href="gallery.html" class="btn-primary">
-
-                    Open
-
-                </a>
-
-            </div>
-
-            <div class="why-card">
-
-                <i class="fa-solid fa-pen-to-square"></i>
-
-                <h3>Notices</h3>
-
-                <p>Create, edit and delete school notices.</p>
-
-                <a href="notices.html" class="btn-primary">
-
-                    Open
-
-                </a>
-
-            </div>
-
-        </div>
-
+<div class="sidebar">
+
+    <div class="logo">
+        <img src="../assets/images/logo.png" alt="Logo">
+        <h3>ASC School</h3>
     </div>
 
-</section>
+    <ul>
 
-<script type="module" src="../assets/js/firebase.js"></script>
+        <li class="active">
+            <a href="#">
+                <i class="fa-solid fa-house"></i>
+                Dashboard
+            </a>
+        </li>
 
-<script type="module">
+        <li>
+            <a href="admissions.html">
+                <i class="fa-solid fa-user-graduate"></i>
+                Admissions
+            </a>
+        </li>
 
-import { auth, db } from "../assets/js/firebase.js";
+        <li>
+            <a href="students.html">
+                <i class="fa-solid fa-users"></i>
+                Students
+            </a>
+        </li>
 
-import {
-    signOut
-} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+        <li>
+            <a href="gallery.html">
+                <i class="fa-solid fa-image"></i>
+                Gallery
+            </a>
+        </li>
 
-import {
-    collection,
-    getDocs
-} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+        <li>
+            <a href="notices.html">
+                <i class="fa-solid fa-bullhorn"></i>
+                Notices
+            </a>
+        </li>
 
-async function loadCounts() {
+        <li>
+            <a href="fees.html">
+                <i class="fa-solid fa-money-bill-wave"></i>
+                Fee Structure
+            </a>
+        </li>
 
-    const admissions = await getDocs(collection(db, "admissions"));
-    document.getElementById("admissionCount").innerText = admissions.size;
+        <li>
+            <a href="settings.html">
+                <i class="fa-solid fa-gear"></i>
+                Settings
+            </a>
+        </li>
 
-    const contacts = await getDocs(collection(db, "contacts"));
-    document.getElementById("messageCount").innerText = contacts.size;
+        <li>
+            <a href="#" id="logoutBtn">
+                <i class="fa-solid fa-right-from-bracket"></i>
+                Logout
+            </a>
+        </li>
 
-    const gallery = await getDocs(collection(db, "gallery"));
-    document.getElementById("galleryCount").innerText = gallery.size;
+    </ul>
 
-    const notices = await getDocs(collection(db, "notices"));
-    document.getElementById("noticeCount").innerText = notices.size;
+</div>
 
-}
+<div class="main">
 
-loadCounts();
+    <header>
 
-document.getElementById("logoutBtn").addEventListener("click", async () => {
+        <h2>Dashboard</h2>
 
-    await signOut(auth);
+        <div class="admin-info">
+            <i class="fa-solid fa-circle-user"></i>
+            <span id="adminName">Administrator</span>
+        </div>
 
-    window.location.href = "login.html";
+    </header>
 
-});
+    <section class="cards">
 
-</script>
+        <div class="card">
+            <i class="fa-solid fa-file-circle-plus"></i>
+            <h3 id="totalAdmissions">0</h3>
+            <p>Total Admissions</p>
+        </div>
+
+        <div class="card">
+            <i class="fa-solid fa-clock"></i>
+            <h3 id="pendingAdmissions">0</h3>
+            <p>Pending</p>
+        </div>
+
+        <div class="card">
+            <i class="fa-solid fa-circle-check"></i>
+            <h3 id="approvedAdmissions">0</h3>
+            <p>Approved</p>
+        </div>
+
+        <div class="card">
+            <i class="fa-solid fa-user-group"></i>
+            <h3 id="totalStudents">0</h3>
+            <p>Total Students</p>
+        </div>
+
+    </section>
+
+    <section class="recent">
+
+        <div class="table-box">
+
+            <div class="table-header">
+                <h3>Recent Admissions</h3>
+            </div>
+
+            <table>
+
+                <thead>
+
+                <tr>
+                    <th>Admission No.</th>
+                    <th>Name</th>
+                    <th>Class</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                </tr>
+
+                </thead>
+
+                <tbody id="recentAdmissions">
+
+                <tr>
+                    <td colspan="5" style="text-align:center;">
+                        No Admissions Found
+                    </td>
+                </tr>
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </section>
+
+</div>
+
+<script type="module" src="js/dashboard.js"></script>
 
 </body>
-
 </html>
